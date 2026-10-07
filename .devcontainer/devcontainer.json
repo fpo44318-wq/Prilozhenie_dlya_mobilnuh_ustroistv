@@ -1,0 +1,31 @@
+{
+  "name": "Flutter Development Environment",
+  // Используем готовый базовый образ Ubuntu от Microsoft
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  
+  // Подключаем официальные фичи для автоматической установки Flutter и Android SDK
+  "features": {
+    "ghcr.io/devcontainers/features/flutter:1": {
+      "version": "latest",
+      "androidSdk": "true"
+    }
+  },
+
+  // Автоматическая установка расширений в VS Code (в браузере или десктопе)
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Dart-Code.flutter",
+        "Dart-Code.dart-code"
+      ]
+    }
+  },
+
+  // Проброс портов для Flutter Web (3000) и системных нужд (8080)
+  "forwardPorts": [3000, 8080],
+
+  // Выполнение команд сразу после сборки контейнера
+  "postCreateCommand": "flutter doctor && flutter config --enable-web",
+
+  "remoteUser": "vscode"
+}
